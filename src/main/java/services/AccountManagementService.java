@@ -18,6 +18,10 @@ public class AccountManagementService {
                 WithdrawalService withdrawalService = new WithdrawalService();
                 withdrawalService.withdrawalAmountFromAccount(account);
                 break;
+            case 3:
+                account.getHistory();
+            case 4:
+                break;
 
             default:
         }

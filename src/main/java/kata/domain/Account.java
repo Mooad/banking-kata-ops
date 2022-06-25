@@ -3,11 +3,13 @@ package kata.domain;
 import enumeration.OperationType;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Account {
 
     private Balance amount;
 
+    private final History history = new History();
 
     public Account(Balance amount) {
         this.amount = amount;
@@ -25,6 +27,7 @@ public class Account {
     }
 
     private void addOperation(Balance amount, OperationType type) {
+        this.history.addOperation(new Operation(amount.value(), getBalance(), LocalDate.now(), type));
     }
 
     private void subtract(Balance amount) {
@@ -46,6 +49,7 @@ public class Account {
     }
 
     public void getHistory() {
+        this.history.getPrintStatement();
     }
 
 }
