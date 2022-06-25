@@ -3,7 +3,6 @@ package kata.domain;
 import enumeration.OperationType;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class Account {
 
@@ -20,12 +19,17 @@ public class Account {
     }
 
     public void withdraw(Balance amount) {
-
+        this.checkAmountToWithDraw(amount);
+        this.subtract(amount);
+        addOperation(amount, OperationType.WITHDRAW);
     }
 
     private void addOperation(Balance amount, OperationType type) {
     }
 
+    private void subtract(Balance amount) {
+        this.amount = this.amount.subtract(amount);
+    }
 
     private void addToAccount(Balance amount) {
         this.amount = this.amount.add(amount);
